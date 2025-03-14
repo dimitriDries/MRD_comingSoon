@@ -101,6 +101,33 @@ input, select, textarea {
 		line-height: 1.65em;
 	}
 
+		/* classes for coming soon message */
+		#comingsoon	{
+			font-size: 3em;
+			font-weight: 100;
+			line-height: 1.1em;
+			text-align: center;
+			margin: 0 0 -2em 0;
+			opacity: 0;
+			animation: easeIn 2s forwards;
+			animation-delay: 3.1s;
+		}
+
+		#comingsoonList	{
+			opacity: 0;
+			animation: easeIn 2s forwards;
+			animation-delay: 1s;
+			margin: 0 0 0 0;
+		}
+
+		@keyframes easeIn {
+			to {
+				opacity: 1;
+				margin: 1em 0 0 0;
+			}
+		}
+	
+
 		@media screen and (max-width: 1680px) {
 
 			body, input, select, textarea {
@@ -150,15 +177,15 @@ input, select, textarea {
 	}
 
 	p {
-		margin: 0 0 2em 0;
+		margin: 0 0 1em 0;
 	}
 
-	h1, h2, h3, h4, h5, h6 {
+	h1, h2, h3, h4, h5, h6, hx {
 		color: #f2f4f3ff;
 		font-weight: 400;
 		letter-spacing: 0.225em;
 		line-height: 1em;
-		margin: 0 0 1em 0;
+		margin: 0 0 0.6em 0;
 		text-transform: uppercase;
 	}
 
@@ -2140,7 +2167,6 @@ input, select, textarea {
 
 	ul {
 		list-style: disc;
-		margin: 0 0 2em 0;
 		padding-left: 1em;
 	}
 
@@ -3828,10 +3854,6 @@ input, select, textarea {
 
 	#main > header {
 		padding: 12em 0 10em 0 ;
-		background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner.jpg");
-		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner.jpg");
-		background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner.jpg");
-		background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner.jpg");
 		background-attachment: fixed;
 		background-position: center center;
 		background-repeat: no-repeat;
@@ -3995,10 +4017,6 @@ input, select, textarea {
 
 	body.is-mobile.landing #banner,
 	body.is-mobile.landing .wrapper.style4 {
-		background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner.jpg");
-		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner.jpg");
-		background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner.jpg");
-		background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner.jpg");
 		background-position: center center;
 		background-repeat: no-repeat;
 		background-size: cover;
