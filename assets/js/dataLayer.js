@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
         'event': 'page_impression',
         'pageName': body.getAttribute('data-name') ? body.getAttribute('data-name').toLowerCase() : '',
         'pageLanguage': body.getAttribute('data-language') ? body.getAttribute('data-language').toLowerCase() : '',
-        'pageType': body.getAttribute('data-type') ? body.getAttribute('data-type').toLowerCase() : ''
+        'pageType': body.getAttribute('data-type') ? body.getAttribute('data-type').toLowerCase() : '',
+        'component': 'page'
     });
 
     //add event listener to each button
