@@ -1,0 +1,192 @@
+/* MRD V2 – Design tokens and mobile-first base */
+
+:root {
+  /* Brand palette */
+  --turkey-red: #ad0500;
+  --turkey-red-hover: #c40600;
+  --turkey-red-active: #8a0400;
+  --rich-black: #011627;
+  --rich-black-light: #0d2137;
+  --arylide-yellow: #f2dd6e;
+  --white-smoke: #f2f4f3;
+  --ash-gray: #afbfc0;
+
+  /* Semantic tokens */
+  --color-bg: var(--rich-black);
+  --color-bg-elevated: var(--rich-black-light);
+  --color-text: var(--white-smoke);
+  --color-text-muted: var(--ash-gray);
+  --color-accent: var(--turkey-red);
+  --color-accent-hover: var(--turkey-red-hover);
+  --color-accent-active: var(--turkey-red-active);
+  --color-border: rgba(175, 191, 192, 0.4);
+  --color-input-bg: rgba(255, 255, 255, 0.06);
+  --color-overlay-backdrop: rgba(1, 22, 39, 0.85);
+
+  /* Typography */
+  font-family: 'Open Sans', system-ui, Helvetica, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Spacing / layout */
+  --section-min-height: 80vh;
+  --header-height: 4rem;
+  --container-padding: 1.25rem;
+  --space-section: 4rem;
+  --duration-transition: 0.2s;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --container-padding: 2rem;
+    --space-section: 5rem;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color var(--duration-transition) ease;
+}
+
+a:hover {
+  color: var(--ash-gray);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Utility: visually hidden but available to screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only--focusable:focus {
+  position: fixed;
+  top: 0;
+  left: var(--container-padding);
+  z-index: 9999;
+  width: auto;
+  height: auto;
+  padding: 0.75rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  background: var(--color-accent);
+  color: var(--white-smoke);
+  font-weight: 600;
+}
+
+/* Container for section content */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+/* Section base */
+.section {
+  min-height: var(--section-min-height);
+  padding-block: var(--space-section);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Primary CTA button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-accent);
+  color: var(--white-smoke);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: background-color var(--duration-transition) ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.btn-primary:active {
+  background-color: var(--color-accent-active);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--arylide-yellow);
+  outline-offset: 2px;
+}
+
+/* Secondary button (outline) */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  color: var(--color-text);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  border: 2px solid var(--color-border);
+  transition: border-color var(--duration-transition) ease, color var(--duration-transition) ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--ash-gray);
+  color: var(--ash-gray);
+}
+
+.btn-secondary:focus-visible {
+  outline: 2px solid var(--arylide-yellow);
+  outline-offset: 2px;
+}
