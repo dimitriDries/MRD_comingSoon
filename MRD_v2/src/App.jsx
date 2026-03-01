@@ -120,25 +120,25 @@ function App() {
       <div style={{ height: 'var(--header-height)' }} aria-hidden="true" />
       <main>
         <Hero onOpenContact={() => openOverlay('contact')} />
-        <section ref={refAbout} id="about-teaser" className={`section ${inViewAbout ? 'section--visible' : ''}`} aria-label="About teaser">
+        <section ref={refAbout} id="about-teaser" className={`section section--alt ${inViewAbout ? 'section--visible' : ''}`} aria-label="About teaser">
           <SectionAbout onOpenAbout={() => openOverlay('about')} />
         </section>
-        <section ref={refServices} id="services-teaser" className={`section section--alt section--overlap ${inViewServices ? 'section--visible' : ''}`} aria-label="Services teaser">
+        <section ref={refServices} id="services-teaser" className={`section section--overlap ${inViewServices ? 'section--visible' : ''}`} aria-label="Services teaser">
           <SectionServices onOpenServices={() => openOverlay('services')} />
         </section>
-        <section ref={refHowIWork} id="how-i-work" className={`section ${inViewHowIWork ? 'section--visible' : ''}`} aria-label="How I work">
+        <section ref={refHowIWork} id="how-i-work" className={`section section--alt ${inViewHowIWork ? 'section--visible' : ''}`} aria-label="How I work">
           <SectionHowIWork onOpenContact={() => openOverlay('contact')} />
         </section>
-        <section ref={refClients} id="clients" className={`section section--alt section--overlap ${inViewClients ? 'section--visible' : ''}`} aria-label="Client logos">
+        <section ref={refClients} id="clients" className={`section section--overlap ${inViewClients ? 'section--visible' : ''}`} aria-label="Client logos">
           <SectionClientLogos />
         </section>
-        <section ref={refTestimonial} id="testimonial" className={`section ${inViewTestimonial ? 'section--visible' : ''}`} aria-label="Testimonial">
+        <section ref={refTestimonial} id="testimonial" className={`section section--alt ${inViewTestimonial ? 'section--visible' : ''}`} aria-label="Testimonial">
           <SectionTestimonial />
         </section>
-        <section ref={refInsights} id="insights" className={`section section--alt section--overlap ${inViewInsights ? 'section--visible' : ''}`} aria-label="Insights">
+        <section ref={refInsights} id="insights" className={`section section--overlap ${inViewInsights ? 'section--visible' : ''}`} aria-label="Insights">
           <SectionInsights />
         </section>
-        <section ref={refFinalCta} id="final-cta" className={`section section--overlap ${inViewFinalCta ? 'section--visible' : ''}`} aria-label="Final CTA">
+        <section ref={refFinalCta} id="final-cta" className={`section section--alt section--overlap ${inViewFinalCta ? 'section--visible' : ''}`} aria-label="Final CTA">
           <SectionFinalCta onOpenContact={() => openOverlay('contact')} />
         </section>
       </main>
