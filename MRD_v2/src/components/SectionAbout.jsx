@@ -22,7 +22,7 @@ function SectionAbout({ onOpenAbout }) {
           </button>
         </div>
         <div className="section-about__visual">
-          <img src="https://placehold.co/500x350/f5f2ef/5c5c5c?text=About" alt="" width="500" height="350" />
+          <img src="https://placehold.co/500x350/f5f2ef/5c5c5c?text=About" alt="" width="500" height="350" loading="lazy" />
         </div>
       </div>
       <style>{`

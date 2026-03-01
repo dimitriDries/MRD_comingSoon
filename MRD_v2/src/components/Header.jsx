@@ -40,7 +40,7 @@ function Header({ onOpenOverlay, onOpenContact, mobileMenuOpen, onToggleMobileMe
   return (
     <header className={`header ${headerVisible ? '' : 'header--hidden'}`} role="banner">
       <div className="header__inner container">
-        <a href="#" className="header__logo" onClick={(e) => { e.preventDefault(); handleAnchorClick('hero', 'home'); }} aria-label="Home">
+        <a href="#hero" className="header__logo" onClick={(e) => { e.preventDefault(); document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' }); handleAnchorClick('hero', 'home'); }} aria-label="Home">
           <img src="/images/MonsieurData_logo.png" alt="MonsieurData — Dimitri Digital Analytics" width="160" height="48" />
         </a>
 

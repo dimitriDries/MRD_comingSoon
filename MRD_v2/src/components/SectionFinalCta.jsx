@@ -44,6 +44,9 @@ function SectionFinalCta({ onOpenContact }) {
           .section-final {
             padding-block: 3.5rem 0;
           }
+          .section-final__ctas {
+            margin-bottom: 1.5rem;
+          }
         }
         @media (min-width: 768px) {
           .section-final {

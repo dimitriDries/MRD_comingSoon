@@ -77,6 +77,7 @@ function Overlay({ title, onClose, children }) {
           background: var(--color-overlay-backdrop);
           backdrop-filter: blur(8px);
           -webkit-backdrop-filter: blur(8px);
+          cursor: pointer;
         }
         .overlay__panel {
           position: relative;

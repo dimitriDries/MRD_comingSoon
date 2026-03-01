@@ -162,6 +162,7 @@ button {
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 0;
   pointer-events: none;
 }
 
@@ -309,6 +310,12 @@ main {
 }
 
 .btn-secondary:focus-visible {
+  outline: 2px solid var(--arylide-yellow);
+  outline-offset: 2px;
+}
+
+/* Global focus ring for keyboard users (all focusable elements) */
+:focus-visible {
   outline: 2px solid var(--arylide-yellow);
   outline-offset: 2px;
 }

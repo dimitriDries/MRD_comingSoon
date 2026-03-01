@@ -32,6 +32,7 @@ function SectionTestimonial() {
   const [transition, setTransition] = useState(true)
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const id = setInterval(() => {
       setOffset((prev) => (prev + 1) % (count + 1))
     }, AUTO_ADVANCE_MS)
