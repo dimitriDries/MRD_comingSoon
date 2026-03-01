@@ -1,6 +1,6 @@
 import { pushButtonClick, pushLinkClick } from '../utils/dataLayer'
 
-function Header({ onOpenOverlay, onOpenContact, mobileMenuOpen, onToggleMobileMenu, onCloseMobileMenu }) {
+function Header({ onOpenOverlay, onOpenContact, mobileMenuOpen, onToggleMobileMenu, onCloseMobileMenu, headerVisible = true }) {
   const handleNavClick = (type, target) => {
     if (type === 'overlay') {
       onOpenOverlay(target)
@@ -38,7 +38,7 @@ function Header({ onOpenOverlay, onOpenContact, mobileMenuOpen, onToggleMobileMe
   }
 
   return (
-    <header className="header" role="banner">
+    <header className={`header ${headerVisible ? '' : 'header--hidden'}`} role="banner">
       <div className="header__inner container">
         <a href="#" className="header__logo" onClick={(e) => { e.preventDefault(); handleAnchorClick('hero', 'home'); }} aria-label="Home">
           <img src="/images/MonsieurData_logo.png" alt="MonsieurData — Dimitri Digital Analytics" width="160" height="48" />
@@ -72,12 +72,19 @@ function Header({ onOpenOverlay, onOpenContact, mobileMenuOpen, onToggleMobileMe
 
       <style>{`
         .header {
-          position: sticky;
+          position: fixed;
           top: 0;
+          left: 0;
+          right: 0;
           z-index: 1000;
-          background-color: var(--color-bg);
+          background-color: var(--color-header-bg);
           border-bottom: 1px solid var(--color-border);
+          box-shadow: 0 1px 12px rgba(0, 0, 0, 0.06);
           height: var(--header-height);
+          transition: transform 0.25s ease;
+        }
+        .header--hidden {
+          transform: translateY(-100%);
         }
         .header__inner {
           display: flex;
@@ -111,9 +118,10 @@ function Header({ onOpenOverlay, onOpenContact, mobileMenuOpen, onToggleMobileMe
           top: var(--header-height);
           left: 0;
           right: 0;
-          background: var(--color-bg);
+          background: var(--color-header-bg);
           padding: 1rem;
           border-bottom: 1px solid var(--color-border);
+          box-shadow: 0 1px 12px rgba(0, 0, 0, 0.06);
           transform: translateY(-100%);
           visibility: hidden;
           transition: transform 0.2s ease, visibility 0.2s ease;
@@ -145,7 +153,7 @@ function Header({ onOpenOverlay, onOpenContact, mobileMenuOpen, onToggleMobileMe
         }
         .header__nav-list a:hover,
         .header__nav-link:hover {
-          color: var(--ash-gray);
+          color: var(--color-text-muted);
         }
         .header__cta {
           margin-top: 1rem;

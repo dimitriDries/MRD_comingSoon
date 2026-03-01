@@ -8,7 +8,7 @@ function SectionAbout({ onOpenAbout }) {
 
   return (
     <div className="container">
-      <div className="section-about">
+      <div className="section-about section__stagger">
         <div className="section-about__text">
           <h2 className="section-about__headline">Analytics without guesswork.</h2>
           <p>
@@ -22,7 +22,7 @@ function SectionAbout({ onOpenAbout }) {
           </button>
         </div>
         <div className="section-about__visual">
-          <img src="https://placehold.co/500x350/0d2137/afbfc0?text=About" alt="" width="500" height="350" />
+          <img src="https://placehold.co/500x350/f5f2ef/5c5c5c?text=About" alt="" width="500" height="350" />
         </div>
       </div>
       <style>{`
@@ -36,9 +36,12 @@ function SectionAbout({ onOpenAbout }) {
           .section-about { grid-template-columns: 1fr 1fr; }
         }
         .section-about__headline { font-size: 1.75rem; margin: 0 0 1rem 0; }
+        @media (max-width: 767px) {
+          .section-about__headline { font-size: 1.5rem; }
+        }
         .section-about__text p { margin: 0 0 1rem 0; color: var(--color-text-muted); }
         .section-about__cta { margin-top: 0.5rem; }
-        .section-about__visual img { width: 100%; height: auto; border-radius: 4px; }
+        .section-about__visual img { width: 100%; height: auto; border-radius: var(--radius-md); }
       `}</style>
     </div>
   )

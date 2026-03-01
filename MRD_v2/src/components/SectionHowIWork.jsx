@@ -15,7 +15,7 @@ function SectionHowIWork({ onOpenContact }) {
 
   return (
     <div className="container">
-      <div className="section-how">
+      <div className="section-how section__stagger">
         <h2 className="section-how__headline">How I Work</h2>
         <ol className="section-how__timeline">
           {STEPS.map((step) => (
@@ -34,6 +34,9 @@ function SectionHowIWork({ onOpenContact }) {
       </div>
       <style>{`
         .section-how__headline { font-size: 1.75rem; margin: 0 0 2rem 0; text-align: center; }
+        @media (max-width: 767px) {
+          .section-how__headline { font-size: 1.5rem; }
+        }
         .section-how__timeline {
           list-style: none;
           margin: 0;
@@ -51,8 +54,9 @@ function SectionHowIWork({ onOpenContact }) {
           gap: 0.5rem;
           padding: 1rem;
           background: var(--color-bg-elevated);
-          border-radius: 4px;
+          border-radius: var(--radius-md);
           border-left: 4px solid var(--color-accent);
+          box-shadow: var(--shadow-card);
         }
         .section-how__num {
           display: inline-flex;
@@ -69,6 +73,9 @@ function SectionHowIWork({ onOpenContact }) {
         .section-how__step-title { margin: 0 0 0.25rem 0; font-size: 1.05rem; }
         .section-how__step-text { margin: 0; font-size: 0.9rem; color: var(--color-text-muted); }
         .section-how__cta { margin: 2rem auto 0; display: block; }
+        @media (max-width: 767px) {
+          .section-how__cta { margin-bottom: 1.5rem; }
+        }
       `}</style>
     </div>
   )

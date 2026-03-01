@@ -12,7 +12,7 @@ function SectionFinalCta({ onOpenContact }) {
   }
 
   return (
-    <div className="section-final container">
+    <div className="section-final container section__stagger">
       <h2 className="section-final__headline">Ready to fix your analytics foundation?</h2>
       <p className="section-final__text">
         Whether you need a full tracking implementation or a structured audit, I can help.
@@ -30,11 +30,35 @@ function SectionFinalCta({ onOpenContact }) {
           text-align: center;
           padding: 3rem 0;
           background: var(--color-bg-elevated);
-          border-radius: 8px;
+          border-radius: var(--radius-lg);
           border: 1px solid var(--color-border);
+          box-shadow: var(--shadow-card);
+        }
+        @media (max-width: 767px) {
+          .section-final {
+            width: calc(100% - 2 * var(--container-padding));
+            margin-inline: auto;
+          }
+        }
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .section-final {
+            padding-block: 3.5rem 0;
+          }
+        }
+        @media (min-width: 768px) {
+          .section-final {
+            max-width: 800px;
+            margin-inline: auto;
+          }
         }
         .section-final__headline { font-size: 1.75rem; margin: 0 0 1rem 0; }
+        @media (max-width: 767px) {
+          .section-final__headline { font-size: 1.35rem; }
+        }
         .section-final__text { margin: 0 0 1.5rem 0; color: var(--color-text-muted); max-width: 40ch; margin-inline: auto; }
+        @media (max-width: 767px) {
+          .section-final__text { font-size: 0.85rem; }
+        }
         .section-final__ctas { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
       `}</style>
     </div>

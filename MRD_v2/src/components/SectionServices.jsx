@@ -15,7 +15,7 @@ function SectionServices({ onOpenServices }) {
 
   return (
     <div className="container">
-      <div className="section-services">
+      <div className="section-services section__stagger">
         <div className="section-services__grid">
           {SERVICES.map((s) => (
             <article key={s.title} className="service-card">
@@ -47,8 +47,13 @@ function SectionServices({ onOpenServices }) {
         .service-card {
           padding: 1.5rem;
           background: var(--color-bg-elevated);
-          border-radius: 4px;
+          border-radius: var(--radius-md);
           border: 1px solid var(--color-border);
+          box-shadow: var(--shadow-card);
+          transition: box-shadow var(--duration-transition) ease;
+        }
+        .service-card:hover {
+          box-shadow: var(--shadow-card-hover);
         }
         .service-card__icon { color: var(--arylide-yellow); margin-bottom: 0.5rem; font-size: 1.5rem; }
         .service-card__title { font-size: 1.1rem; margin: 0 0 0.5rem 0; }

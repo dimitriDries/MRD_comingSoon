@@ -58,7 +58,7 @@ function Footer({ onOpenOverlay }) {
 
       <style>{`
         .footer {
-          background-color: var(--color-bg-elevated);
+          background-color: transparent;
           padding-block: var(--space-section) 2rem;
           margin-top: var(--space-section);
         }

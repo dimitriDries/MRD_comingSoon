@@ -11,17 +11,23 @@
   --white-smoke: #f2f4f3;
   --ash-gray: #afbfc0;
 
-  /* Semantic tokens */
-  --color-bg: var(--rich-black);
-  --color-bg-elevated: var(--rich-black-light);
-  --color-text: var(--white-smoke);
-  --color-text-muted: var(--ash-gray);
+  /* Semantic tokens (light theme, red accent preserved) */
+  --color-bg: #f5f2ef;
+  --color-bg-elevated: #ffffff;
+  --color-text: #1a1a1a;
+  --color-text-muted: #5c5c5c;
   --color-accent: var(--turkey-red);
   --color-accent-hover: var(--turkey-red-hover);
   --color-accent-active: var(--turkey-red-active);
-  --color-border: rgba(175, 191, 192, 0.4);
-  --color-input-bg: rgba(255, 255, 255, 0.06);
-  --color-overlay-backdrop: rgba(1, 22, 39, 0.85);
+  --color-border: rgba(0, 0, 0, 0.12);
+  --color-input-bg: #ffffff;
+  --color-overlay-backdrop: rgba(0, 0, 0, 0.4);
+  --color-header-bg: #ffffff;
+
+  /* Shape / radius tokens */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
 
   /* Typography */
   font-family: 'Open Sans', system-ui, Helvetica, sans-serif;
@@ -33,17 +39,29 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* Spacing / layout */
-  --section-min-height: 80vh;
+  --section-min-height: 60vh;
+  --hero-min-height: 100vh;
   --header-height: 4rem;
   --container-padding: 1.25rem;
-  --space-section: 4rem;
+  --space-section: clamp(2rem, 4vw, 2.5rem);
   --duration-transition: 0.2s;
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 @media (min-width: 768px) {
   :root {
     --container-padding: 2rem;
-    --space-section: 5rem;
+  }
+}
+
+/* Slightly smaller type on mobile */
+@media (max-width: 767px) {
+  body {
+    font-size: 0.875rem;
+  }
+  main h2 {
+    font-size: 1.25rem;
   }
 }
 
@@ -55,6 +73,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -69,6 +88,7 @@ body {
   min-height: 100vh;
   background-color: var(--color-bg);
   color: var(--color-text);
+  overflow-x: hidden;
 }
 
 img {
@@ -84,7 +104,7 @@ a {
 }
 
 a:hover {
-  color: var(--ash-gray);
+  color: var(--color-text-muted);
 }
 
 button {
@@ -124,6 +144,32 @@ button {
   font-weight: 600;
 }
 
+.app-root {
+  position: relative;
+}
+
+/* Full-page particles canvas (sized by particles.js; ensure it fills viewport) */
+.particles-bg canvas {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.scroll-shapes-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
 /* Container for section content */
 .container {
   width: 100%;
@@ -132,13 +178,88 @@ button {
   padding-inline: var(--container-padding);
 }
 
-/* Section base */
+/* Section base (transparent so particles show through) */
 .section {
   min-height: var(--section-min-height);
   padding-block: var(--space-section);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: transparent;
+}
+
+.section--alt {
+  background-color: transparent;
+}
+
+#insights {
+  padding-bottom: calc(var(--space-section) + clamp(3rem, 3vw, 4rem));
+}
+
+#how-i-work {
+  padding-bottom: 5rem;
+}
+@media (min-width: 768px) {
+  #how-i-work {
+    padding-bottom: var(--space-section);
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  #how-i-work {
+    padding-bottom: calc(var(--space-section) + 1rem);
+  }
+  #final-cta {
+    padding-bottom: calc(var(--space-section) + 1.5rem);
+  }
+}
+
+/* Overlapping sections (fluid so no jump at breakpoint) */
+.section--overlap {
+  position: relative;
+  z-index: 2;
+  margin-top: clamp(-4rem, -5vw, -3rem);
+  padding-top: calc(var(--space-section) + clamp(3rem, 2vw, 4rem));
+}
+
+/* Scroll reveal: sections start slightly below and fade in (hero excluded) */
+@media (prefers-reduced-motion: no-preference) {
+  .section:not(.hero) {
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .section.section--visible,
+  .section.hero {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered reveal for section children (appearing elements on scroll) */
+.section__stagger > * {
+  opacity: 0;
+  transform: translateY(0.75rem);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.section.section--visible .section__stagger > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .section.section--visible .section__stagger > *:nth-child(1) { transition-delay: 0s; }
+  .section.section--visible .section__stagger > *:nth-child(2) { transition-delay: 0.06s; }
+  .section.section--visible .section__stagger > *:nth-child(3) { transition-delay: 0.12s; }
+  .section.section--visible .section__stagger > *:nth-child(4) { transition-delay: 0.18s; }
+  .section.section--visible .section__stagger > *:nth-child(5) { transition-delay: 0.24s; }
+  .section.section--visible .section__stagger > *:nth-child(6) { transition-delay: 0.3s; }
+  .section.section--visible .section__stagger > *:nth-child(7) { transition-delay: 0.36s; }
+  .section.section--visible .section__stagger > *:nth-child(8) { transition-delay: 0.42s; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .section__stagger > * {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* Primary CTA button */
@@ -151,6 +272,7 @@ button {
   color: var(--white-smoke);
   font-weight: 600;
   letter-spacing: 0.05em;
+  border-radius: var(--radius-sm);
   transition: background-color var(--duration-transition) ease;
 }
 
@@ -178,12 +300,13 @@ button {
   font-weight: 600;
   letter-spacing: 0.05em;
   border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
   transition: border-color var(--duration-transition) ease, color var(--duration-transition) ease;
 }
 
 .btn-secondary:hover {
-  border-color: var(--ash-gray);
-  color: var(--ash-gray);
+  border-color: var(--color-text-muted);
+  color: var(--color-text-muted);
 }
 
 .btn-secondary:focus-visible {

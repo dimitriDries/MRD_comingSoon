@@ -85,14 +85,14 @@ function Overlay({ title, onClose, children }) {
           min-height: 100%;
           max-width: 900px;
           margin: 0 auto;
-          background: var(--color-bg);
-          box-shadow: 0 0 40px rgba(0,0,0,0.5);
+          background: var(--color-bg-elevated);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
         }
         @media (min-width: 768px) {
           .overlay__panel {
             min-height: auto;
             margin: 2rem auto;
-            border-radius: 8px;
+            border-radius: var(--radius-lg);
             max-height: calc(100vh - 4rem);
             overflow: hidden;
             display: flex;
@@ -115,7 +115,7 @@ function Overlay({ title, onClose, children }) {
           color: var(--color-text);
           background: var(--color-bg-elevated);
           border: 1px solid var(--color-border);
-          border-radius: 4px;
+          border-radius: var(--radius-sm);
           cursor: pointer;
           transition: background var(--duration-transition) ease;
         }

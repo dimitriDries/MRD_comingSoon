@@ -73,7 +73,7 @@ function ContactOverlay({ onClose }) {
           padding: 0.6rem 0.75rem;
           background: var(--color-input-bg);
           border: 1px solid var(--color-border);
-          border-radius: 4px;
+          border-radius: var(--radius-sm);
           color: var(--color-text);
           font-family: inherit;
           font-size: 1rem;

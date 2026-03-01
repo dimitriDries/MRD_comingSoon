@@ -1,39 +1,6 @@
-import { useRef, useEffect } from 'react'
 import { pushButtonClick } from '../utils/dataLayer'
 
-const PARTICLES_CONFIG = {
-  particles: {
-    number: { value: 250, density: { enable: true, value_area: 1000 } },
-    color: { value: '#f2f4f3' },
-    shape: { type: 'circle' },
-    opacity: { value: 0.1 },
-    size: { value: 1 },
-    line_linked: { enable: true, distance: 100, color: '#f2f4f3', opacity: 0.1, width: 1 },
-    move: { enable: true, speed: 0.4, direction: 'none', out_mode: 'out' },
-  },
-  interactivity: {
-    detect_on: 'window',
-    events: { onhover: { enable: false }, onclick: { enable: true, mode: 'push' }, resize: false },
-    modes: { push: { particles_nb: 4 } },
-  },
-  retina_detect: false,
-}
-
 function Hero({ onOpenContact }) {
-  const containerRef = useRef(null)
-  const initDone = useRef(false)
-
-  useEffect(() => {
-    if (!containerRef.current || initDone.current) return
-    let cancelled = false
-    import('particles.js').then(() => {
-      if (cancelled || !containerRef.current || typeof window.particlesJS !== 'function') return
-      window.particlesJS(containerRef.current.id, PARTICLES_CONFIG)
-      initDone.current = true
-    }).catch(() => { initDone.current = false })
-    return () => { cancelled = true }
-  }, [])
-
   const handleStartProject = () => {
     onOpenContact()
     pushButtonClick({ componentName: 'start-project', componentType: 'cta', componentTarget: '#contact', componentText: 'start a project', section: 'hero' })
@@ -46,7 +13,6 @@ function Hero({ onOpenContact }) {
 
   return (
     <section id="hero" className="hero section" aria-label="Hero">
-      <div id="particles-hero" ref={containerRef} className="hero__particles" aria-hidden="true" />
       <div className="hero__content container">
         <div className="hero__text">
           <h1 className="hero__headline">Your analytics should drive decisions — not confusion.</h1>
@@ -63,7 +29,7 @@ function Hero({ onOpenContact }) {
           </div>
         </div>
         <div className="hero__visual">
-          <img src="https://placehold.co/600x400/0d2137/afbfc0?text=Data+visual" alt="" width="600" height="400" />
+          <img src="https://placehold.co/600x400/f5f2ef/5c5c5c?text=Data+visual" alt="" width="600" height="400" />
         </div>
       </div>
 
@@ -71,17 +37,7 @@ function Hero({ onOpenContact }) {
         .hero {
           position: relative;
           overflow: hidden;
-        }
-        .hero__particles {
-          position: absolute;
-          inset: 0;
-          z-index: 0;
-        }
-        .hero__particles canvas {
-          position: absolute;
-          inset: 0;
-          width: 100% !important;
-          height: 100% !important;
+          min-height: var(--hero-min-height, 100vh);
         }
         .hero__content {
           position: relative;
@@ -100,6 +56,10 @@ function Hero({ onOpenContact }) {
           margin: 0 0 1rem 0;
           font-weight: 700;
         }
+        @media (max-width: 767px) {
+          .hero__headline { font-size: 1.35rem; }
+          .hero__subtext { font-size: 0.85rem; }
+        }
         .hero__subtext {
           margin: 0 0 1.5rem 0;
           color: var(--color-text-muted);
@@ -113,7 +73,7 @@ function Hero({ onOpenContact }) {
         .hero__visual img {
           width: 100%;
           height: auto;
-          border-radius: 4px;
+          border-radius: var(--radius-md);
         }
       `}</style>
     </section>

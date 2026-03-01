@@ -10,7 +10,7 @@ const VIEW_ALL_URL = 'https://example.com/insights'
 function SectionInsights() {
   return (
     <div className="container">
-      <div className="section-insights">
+      <div className="section-insights section__stagger">
         <h2 className="section-insights__headline">Insights</h2>
         <div className="section-insights__grid">
           {INSIGHTS.map((insight) => (
@@ -41,6 +41,9 @@ function SectionInsights() {
       </div>
       <style>{`
         .section-insights__headline { font-size: 1.75rem; margin: 0 0 2rem 0; }
+        @media (max-width: 767px) {
+          .section-insights__headline { font-size: 1.5rem; }
+        }
         .section-insights__grid {
           display: grid;
           grid-template-columns: 1fr;
@@ -52,8 +55,13 @@ function SectionInsights() {
         .insight-card {
           padding: 1.5rem;
           background: var(--color-bg-elevated);
-          border-radius: 4px;
+          border-radius: var(--radius-md);
           border: 1px solid var(--color-border);
+          box-shadow: var(--shadow-card);
+          transition: box-shadow var(--duration-transition) ease;
+        }
+        .insight-card:hover {
+          box-shadow: var(--shadow-card-hover);
         }
         .insight-card__title { font-size: 1.1rem; margin: 0 0 0.5rem 0; }
         .insight-card__desc { margin: 0 0 1rem 0; font-size: 0.95rem; color: var(--color-text-muted); }

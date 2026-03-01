@@ -71,7 +71,7 @@ function ServicesOverlay({ onClose, onOpenContact }) {
         .overlay-services__card {
           padding: 1rem;
           background: var(--color-bg-elevated);
-          border-radius: 4px;
+          border-radius: var(--radius-md);
           border: 1px solid var(--color-border);
           text-align: center;
         }
